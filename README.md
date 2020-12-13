@@ -1,5 +1,5 @@
 # Terraform-vpc-Backend
-Before Running this Module please configure your Backend. 
+## Before Running this Module please configure your Backend. 
 Following Example is using S3 :
 ```
 terraform {
@@ -11,6 +11,7 @@ region = "us-east-1"
 }
 ```
 ## Following module will Create VPC :
+(path to VPC config files : https://github.com/vrodi18/terraform-aws-vpc)
 ```
 module "vpc" {
   source                        = "vrodi18/vpc/aws"
@@ -25,7 +26,7 @@ module "vpc" {
   tags                          = "${var.tags}"
 }
 ```
-Declare Variables:
+## Declare Variables:
 ```
 variable "region" {}
 variable "vpc_cidr" {}
@@ -46,6 +47,40 @@ variable "s3_folder_region" {}
 variable "s3_folder_type" {}
 variable "s3_tfstate_file" {}
 ```
+## Outputs:
+```
+output "vpc" {
+  value = "${module.vpc.vpc}"
+}
+output "private_subnet1" {
+  value = "${module.vpc.private_subnets[0]}"
+}
+output "private_subnet2" {
+  value = "${module.vpc.private_subnets[1]}"
+}
+output "private_subnet3" {
+  value = "${module.vpc.private_subnets[2]}"
+}
+output "public_subnet1" {
+  value = "${module.vpc.public_subnets[0]}"
+}
+output "public_subnet2" {
+  value = "${module.vpc.public_subnets[1]}"
+}
+output "public_subnet3" {
+  value = "${module.vpc.public_subnets[2]}"
+}
+output "region" {
+  value = "${module.vpc.region}"
+}
+```
+#### Included Script will help you to  switch between Backends.
 
+## To start Bulding VPC for Prod Department in VA run following commands:
+```
+source setenv.sh -var-file configurations/dev/virginia.tfvars
+terraform plan -var-file  configurations/dev/virginia.tfvars
+terraform apply -var-file  configurations/dev/virginia.tfvars
+```
 
 
