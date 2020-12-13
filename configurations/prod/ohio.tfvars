@@ -1,6 +1,6 @@
 environment = "prod"
 s3_bucket = "backend-state-farrukh" #Will be used to set backend.tf
-s3_folder_project = "class" #Will be used to set backend.tf
+s3_folder_project = "Project_Name" #Will be used to set backend.tf
 s3_folder_region = "us-east-1" #Will be used to set backend.tf
 s3_folder_type = "ohio" #Will be used to set backend.tf
 s3_tfstate_file = "infrastructure.tfstate" #Will be used to set backend.tf
