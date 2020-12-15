@@ -129,7 +129,7 @@ tags    =   {
 
 ## To start Bulding VPC for Prod Department in VA run following commands:
 ```
-source setenv.sh -var-file configurations/dev/virginia.tfvars
+source setenv.sh  configurations/dev/virginia.tfvars
 terraform plan -var-file  configurations/dev/virginia.tfvars
 terraform apply -var-file  configurations/dev/virginia.tfvars
 ```
